@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   kubeforge:
   - apiVersion: v2
+    appVersion: 0.6.0
+    created: "2025-01-14T21:52:56.630367765Z"
+    description: 'Your dynamic approach to provisioning core infrastructure! '
+    digest: 90e88b35bcf972191a6b756f4b896ae921eb5dc068eded982388f4c626784c7c
+    home: https://github.com/wsadza/kubeforge
+    maintainers:
+    - name: Igor Sadza (wsadza)
+    name: kubeforge
+    type: application
+    urls:
+    - https://wsadza.github.io/kubeforge/kubeforge-0.6.0.tgz
+    version: 0.6.0
+  - apiVersion: v2
     appVersion: 0.5.0
     created: "2025-01-14T21:08:05.130271855Z"
     description: 'Your dynamic approach to provisioning core infrastructure! '
@@ -14,4 +27,4 @@ entries:
     urls:
     - https://wsadza.github.io/kubeforge/kubeforge-0.5.0.tgz
     version: 0.5.0
-generated: "2025-01-14T21:08:05.128823382Z"
+generated: "2025-01-14T21:52:56.628869955Z"
