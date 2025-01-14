@@ -1,0 +1,219 @@
+{{/*
+############################################################
+# Copyright (c) 2024 wsadza 
+# Released under the MIT license
+# ----------------------------------------------------------
+#
+# Deployment definition - kubeforge 
+#
+############################################################
+*/}}
+---
+{{- if .Values.kubeforge.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{- include "kubeforge.fullname" . }}"
+  labels:
+    {{- include "kubeforge.labels" . | nindent 4 }}
+  annotations:
+    {{- toYaml .Values.global.annotations | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "kubeforge.matchLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "kubeforge.labels" . | nindent 8 }}
+    spec:
+{{/*
+  # --------------------------------------------
+  # SETTINGS 
+  # --------------------------------------------
+*/}}
+      {{- if .Values.kubeforge.runtimeClassName }}
+      runtimeClassName: {{ toYaml .Values.kubeforge.runtimeClassName }}
+      {{- end }}
+
+      {{- with .Values.kubeforge.nodeSelector }}
+      nodeSelector:
+      {{ toYaml . | indent 2 }}
+      {{- end }}
+
+      {{- if .Values.kubeforge.hostNetwork }}
+      hostNetwork: {{ toYaml .Values.kubeforge.hostNetwork }}
+      {{- end }}
+
+      {{- if .Values.kubeforge.serviceAccountName }}
+      serviceAccountName: {{ toYaml .Values.kubeforge.serviceAccountName }}
+      {{- end }}
+{{/*
+  # --------------------------------------------
+  # CONTAINERS
+  # --------------------------------------------
+*/}}
+      {{- range .Values.kubeforge.containers }}
+      containers:
+        - name: {{ .name }} 
+          {{- if .command }}
+          command:
+            {{- range .command }}
+              - {{ . | quote }}
+            {{- end }}
+          {{- end }}
+          {{- if .args }}
+          args:
+            {{- range .args }}
+              - {{ . | quote }}
+            {{- end }}
+          {{- end }}
+          image: {{ 
+                   include "library.imageByParams" 
+                   (dict "base" .) 
+                 }}
+          imagePullPolicy: {{ .image.pullPolicy }}
+          {{- if .resources }}
+          resources:
+            {{- toYaml .resources | nindent 12 }}
+          {{- end }}
+          env:
+          {{- with .env }}
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
+{{/*
+  containers - ports 
+*/}}
+          {{- if .ports }}
+          ports:
+            {{- .ports | toYaml | nindent 12 }}
+          {{- end }}
+{{/*
+  containers - startup probe
+*/}}
+          {{- if .startupProbe.enabled }}
+          startupProbe:
+{{/* 
+  containers - startup probe - http probe 
+*/}}
+            {{- if .startupProbe.httpGet }}
+            {{- with .startupProbe.httpGet }}
+            httpGet:
+              path: {{ .path }}
+              scheme: {{ .scheme }}
+              port: {{ .port }} 
+            {{- end }}
+            {{- end }}
+{{/* 
+  containers - startup probe - cmd probe 
+*/}}
+            {{- if .startupProbe.exec }}
+            exec:
+              command: 
+              {{- range .startupProbe.exec.command }}
+                - {{ . | quote }}
+              {{- end }}
+            {{- end }}
+
+            initialDelaySeconds: {{ .startupProbe.initialDelaySeconds }}
+            periodSeconds: {{ .startupProbe.periodSeconds }}
+            successThreshold: {{ .startupProbe.successThreshold }}
+            failureThreshold: {{ .startupProbe.failureThreshold }}
+            timeoutSeconds: {{ .startupProbe.timeoutSeconds }}
+          {{- end }}
+{{/*
+  containers - livness probe 
+*/}}
+          {{- if .livnessProbe.enabled }}
+          livenessProbe:
+{{/* 
+  containers - livness probe - http probe 
+*/}}
+            {{- if .livnessProbe.httpGet }}
+            {{- with .livnessProbe.httpGet }}
+            httpGet:
+              path: {{ .path }}
+              scheme: {{ .scheme }}
+              port: {{ .port }} 
+            {{- end }}
+            {{- end }}
+{{/* 
+  containers - livness probe - cmd probe 
+*/}}
+            {{- if .livnessProbe.exec }}
+            exec:
+              command: 
+              {{- range .livnessProbe.exec.command }}
+                - {{ . | quote }}
+              {{- end }}
+            {{- end }}
+
+            initialDelaySeconds: {{ .livnessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .livnessProbe.periodSeconds }}
+            successThreshold: {{ .livnessProbe.successThreshold }}
+            failureThreshold: {{ .livnessProbe.failureThreshold }}
+            timeoutSeconds: {{ .livnessProbe.timeoutSeconds }}
+          {{- end }}
+{{/*
+  containers - volumeMounts
+*/}}
+          {{- if .volumeMounts }}
+          volumeMounts:
+            {{- range .volumeMounts }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }} 
+              {{- if .subPath }}
+              subPath: {{ .subPath }}
+              {{- end }}
+            {{- end }}
+          {{- end }}
+      {{- end }}
+{{/*
+  # --------------------------------------------
+  # VOLUMES 
+  # --------------------------------------------
+*/}}
+      {{- if .Values.kubeforge.volumes }}
+      volumes:
+        {{- range .Values.kubeforge.volumes }}
+{{/* 
+  volumes - configMap
+*/}}
+        {{- if eq .type "configMap" }}
+        - name: {{ .name }}
+          configMap:
+            name: {{ .name }}
+        {{- end }}
+{{/* 
+  volumes - persistentVolumeClaim 
+*/}}
+        {{- if eq .type "persistentVolumeClaim" }}
+        - name: {{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ .name }}
+        {{- end }}
+{{/* 
+  volumes - emptyDIr 
+*/}}
+        {{- if eq .type "emptyDir" }}
+        - name: {{ .name }}
+          emptyDir: {}
+        {{- end }}
+{{/* 
+  volumes - downwardApi 
+*/}}
+        {{- if eq .type "downwardAPI" }}
+        - name: {{ .name }}
+          downwardAPI:
+            items:
+            {{- range .items }}
+              - path: {{ .path }}
+                fieldRef:
+                  fieldPath: {{ .fieldPath }}
+            {{- end }}
+        {{- end }}
+
+        {{- end }}
+      {{- end }}
+...
+{{- end }}

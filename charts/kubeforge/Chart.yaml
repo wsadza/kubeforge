@@ -1,0 +1,9 @@
+apiVersion: v2
+name: kubeforge
+version: "4.13.0"
+description: |
+  Your dynamic approach to provisioning core infrastructure!
+type: application
+home: https://github.com/wsadza/kubeforge
+maintainers:
+  - name: Igor Sadza (wsadza)

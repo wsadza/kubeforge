@@ -1,0 +1,22 @@
+{{/*
+############################################################
+# Copyright (c) 2024 wsadza 
+# Released under the MIT license
+# ----------------------------------------------------------
+#
+############################################################
+*/}}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: "{{- include "kubeforge.fullname" . }}"
+subjects:
+  - kind: ServiceAccount
+    name: "{{- include "kubeforge.fullname" . }}"
+    namespace: "{{ .Release.Namespace }}"
+roleRef:
+  kind: ClusterRole
+  name: "{{- include "kubeforge.fullname" . }}"
+  apiGroup: rbac.authorization.k8s.io
+...

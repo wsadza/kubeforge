@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{- include "kubeforge.fullname" . }}"
+  labels:
+    {{- include "kubeforge.labels" . | nindent 4 }}
+  annotations:
+    {{- if .Values.global.annotations }}
+    {{- toYaml .Values.global.annotations | nindent 4 }}
+    {{- end }}
+    {{- if .Values.kubeforge.service.annotations }}
+    {{- toYaml .Values.kubeforge.service.annotations | nindent 4 }}
+    {{- end }}
+spec:
+  type: {{ .Values.kubeforge.service.type }}
+  ports:
+    {{- if .Values.kubeforge.service.ports }}
+      {{- .Values.kubeforge.service.ports | toYaml | nindent 4 }}
+    {{- end }}
+  selector:
+    {{- include "kubeforge.matchLabels" . | nindent 4 }}

@@ -1,0 +1,116 @@
+############################################################
+# Copyright (c) 2024 wsadza 
+# Released under the MIT license
+# ----------------------------------------------------------
+#
+############################################################
+
+FROM golang:1.23 AS builder
+
+RUN \
+    echo "**** Prepare ****" \
+        && apt-get update \
+        && apt-get install --no-install-recommends -y \
+        	jq \
+          xz-utils
+
+# ~ upx
+
+ARG \
+    UPX_VERSION="v4.2.4"
+
+RUN \
+    echo "**** UPX ****" \
+		&& \
+    if [ "${COMPRESSION_ENABLED}" = "false" ]; \
+    then \
+           ARCHITECTURE="$(dpkg --print-architecture)" \
+        && API_URL_BASE="https://api.github.com/repos" \
+        && API_URL="${API_URL_BASE}/upx/upx" \
+        && if [ "$UPX_VERSION" = "latest" ]; then \
+             UPX_VERSION="$( \
+               curl -fsSL "${API_URL}/releases/latest" \
+               | jq -r '.tag_name' \
+             )"; \
+           fi \
+        && UPX_TARBALL_RELEASE_TARGET="/tmp/upx" \
+        && UPX_TARBALL_RELEASE_URL="$( \
+             curl -fsSL "${API_URL}/releases?per_page=100" \
+             | jq -r \
+               --arg VERSION "${UPX_VERSION}" \
+               --arg ARCHITECTURE "${ARCHITECTURE}" \
+               '.[] \
+                | select(.tag_name == $VERSION) \
+                | .assets[] \
+                | select(.name | contains($ARCHITECTURE) and contains(".tar.xz")) \
+                | .browser_download_url' \
+           )" \
+        && mkdir -p "${UPX_TARBALL_RELEASE_TARGET}" \
+        && curl -fsSL "${UPX_TARBALL_RELEASE_URL}" \
+					 | tar Jxf - -C "${UPX_TARBALL_RELEASE_TARGET}" --strip-components=1 \
+        && mv ${UPX_TARBALL_RELEASE_TARGET}/upx /usr/bin/upx; \
+    fi
+
+# ~ build 
+
+COPY ../ /opt/kubeforge
+WORKDIR /opt/kubeforge
+
+ARG \
+    COMPRESSION_ENABLED=false
+
+RUN \
+    echo "**** Building / Compression: (${COMPRESSION_ENABLED}) ****" \
+    		&& go mod download \
+        && export CGO_ENABLED=0 \
+        && export GOOS=linux \
+        && export GOARCH=amd64 \
+		&& \
+    if [ "${COMPRESSION_ENABLED}" = "false" ]; \
+	  then \
+      	go build \
+          -o /opt/kubeforge/bin/kubeforge \
+          /opt/kubeforge/cmd/main.go; \
+    else \
+      	go build \
+      	  -gcflags=all="-l -B" \
+      	  -ldflags="-w -s" \
+      	  -o /opt/kubeforge/bin/kubeforge \
+      	  /opt/kubeforge/cmd/main.go \
+      	&& upx \
+      	  --best \
+      	  --ultra-brute \
+      	  /opt/kubeforge/bin/kubeforge \
+					>/dev/null; \
+    fi
+
+# ----------------------------------------------------------
+# ~ runtime
+
+FROM alpine:3.21.0 AS runtime
+
+RUN \
+		echo "**** Prepare ****" \
+				&& apk add --no-cache \
+  				 gcompat=1.1.0-r4 \
+					 shadow=4.16.0-r1 \
+		&& \
+		echo "**** Cleanup ****" \
+  	  	&& rm -rf /var/cache/apk/* \
+  	  	&& rm -rf /tmp/* /var/tmp/*
+
+RUN \
+		echo "**** User Setup ****" \
+				&& useradd -u 1000 -m -s /bin/sh kubeforge 
+
+COPY \
+	--from=builder \
+	--chown=1000:755 \
+	/opt/kubeforge/bin/kubeforge \
+	/usr/bin/kubeforge
+
+USER 1000
+
+EXPOSE 8080
+
+ENTRYPOINT [ "kubeforge", "run" ]

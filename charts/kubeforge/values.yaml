@@ -1,0 +1,127 @@
+############################################################
+# Copyright (c) 2024 wsadza 
+# Released under the MIT license
+# ----------------------------------------------------------
+# 
+# Helm Chart definition for custom CRD controller-manager (aka. KubeForge)
+# - create new core-resource based on provided CRDs
+# - inherith static configuration from initial source configuration
+#
+# ----------------------------------------------------------
+#     __ __     __       ___                 
+#    / //_/_ __/ /  ___ / _/__  _______ ____ 
+#   / ,< / // / _ \/ -_) _/ _ \/ __/ _ `/ -_)
+#  /_/|_|\_,_/_.__/\__/_/ \___/_/  \_, /\__/ 
+#                                 /___/      
+#  kubeforge 
+###########################################################
+
+global:
+  labels: []
+
+kubeforge:
+  enabled: true
+
+  runtimeClassName: "" 
+
+  nodeSelector: []
+
+  hostNetwork: ""
+
+  serviceAccountName: "kubeforge"
+
+  initContainers: []
+
+  containers:
+    - name: kubeforge 
+      image:
+        registry:
+        repository: 
+        package: kubeforge 
+        tag: latest 
+        pullSecrets: []
+        pullPolicy: Never 
+      
+      #command: [ "tail", "-f", "/dev/null" ] 
+
+      args: []
+
+      env:
+      - name: KUBEFORGE_SOURCE_CONFIGURATION_PATH
+        value: "/opt/kubeforge/sourceConfiguration.yaml"
+      - name: KUBEFORGE_NAMESPACE_FILTER
+        value: "default"
+      - name: KUBEFORGE_CONTROLLER_NAME
+        value: "kubeforge"
+      - name: HEALTHZ_SERVER_PORT
+        value: "8080"
+
+      resources: []
+
+      ports: 
+      - containerPort: 8080
+        name: readyz 
+
+      volumeMounts:
+        - name: kubeforge-source-configuration
+          mountPath: /opt/kubeforge/sourceConfiguration.yaml
+          subPath: sourceConfiguration.yaml
+
+      startupProbe:
+        enabled: true 
+        httpGet:
+          scheme: HTTP
+          path: /readyz
+          port: 8080
+        initialDelaySeconds: 5 
+        periodSeconds: 5 
+        successThreshold: 1
+        failureThreshold: 5
+        timeoutSeconds: 1
+
+      livnessProbe:
+        enabled: true 
+        httpGet:
+          scheme: HTTP
+          path: /healthz
+          port: 8080
+        initialDelaySeconds: 5 
+        periodSeconds: 5 
+        successThreshold: 1
+        failureThreshold: 5
+        timeoutSeconds: 1
+
+  service:
+    annotations: {}
+    type: ClusterIP 
+    ports:
+      - name: readyz 
+        port: 8080
+        targetPort: 8080 
+        protocol: TCP 
+
+  volumes: 
+    - name: kubeforge-source-configuration
+      type: configMap
+
+# ----------------------------------------------------------
+#  kubeforge 
+
+# @base configuration for new k8s core resources 
+  sourceConfiguration:
+
+# @kubernetes pod(s) configuration
+    Pod:
+    - metadata:
+        name: bannana-pod 
+      spec:
+        containers:
+        - name: bannana 
+          command: [ "tail", "-f", "/dev/null" ]
+
+# @kubernetes pvc(s) configurations
+#    PersistentVolumeClaim:
+
+# @kubernetes cm(s) configurations
+#    ConfigMap:
+

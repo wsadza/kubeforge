@@ -1,0 +1,61 @@
+############################################################
+# Copyright (c) 2024 wsadza 
+# Released under the MIT license
+# ----------------------------------------------------------
+#
+############################################################
+---
+apiVersion: kubeforge.sh/v1
+kind: Overlay
+metadata:
+  name: "bannana"
+spec:
+  data:
+# @kubernetes pod(s) configurations
+    Pod:
+      - metadata:
+          # name should match with sourceConfiguration
+          name: bannana-pod 
+          annotations:
+            # "metal.io/override-name" annotation allows overriding the final Pod's name
+            # during the manifest rendering phase. Since metadata.name is immutable and used
+            # for merging configurations, the annotation is parsed by the rendering tool
+            # to generate the final Pod name before deployment.
+            kubeforge.sh/override-name: "mybannana-pod"
+        spec:
+          containers:
+            - name: bannana 
+              image: busybox 
+              volumeMounts:
+                - name: bannana-pvc 
+                  mountPath: /opt/config
+                  subPath: config
+          volumes:
+            - name: bannana-pvc 
+              persistentVolumeClaim:
+                claimName: bannana-pvc 
+
+# @kubernetes pvc(s) configurations
+    PersistentVolumeClaim:
+      - metadata:
+          name: bannana-pvc
+          annotations:
+            magic: "my-bannana-pvc"
+        spec:
+          accessModes:
+            - ReadWriteMany
+          resources:
+            requests:
+              storage: 20Gi
+          storageClassName: storage-local-retain
+
+# @kubernetes cm(s) configurations
+    ConfigMap:
+      - metadata:
+          name: bannana-cm 
+          annotations:
+            magic: "my-bannana-cm"
+        data:
+          config: |
+            lorem-ipsum
+...

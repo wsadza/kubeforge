@@ -1,0 +1,14 @@
+# @kubernetes pod(s) configuration
+Pod:
+- metadata:
+    name: bannana-pod 
+  spec:
+    containers:
+    - name: bannana 
+      command: [ "tail", "-f", "/dev/null" ]
+
+# @kubernetes pvc(s) configurations
+#PersistentVolumeClaim:
+
+# @kubernetes cm(s) configurations
+#ConfigMap:
