@@ -1,6 +1,6 @@
 apiVersion: v2
 name: kubeforge
-version: "0.4.0"
+version: "0.5.0"
 description: |
   Your dynamic approach to provisioning core infrastructure!
 type: application
