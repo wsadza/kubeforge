@@ -75,7 +75,7 @@ jobs:
         with:
 
           # Required 
-          auth_token:         ${{ github.token }}
+          auth_token:         ${{ secrets.token }}
           dockerfile_context: ${{ steps.dockerfile_find.outputs.DOCKERFILE_CONTEXT }} 
           dockerfile_path:    ${{ steps.dockerfile_find.outputs.DOCKERFILE_PATH }} 
           
@@ -107,7 +107,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v4
         env:
-          GITHUB_TOKEN: "${{ github.token }}"
+          GITHUB_TOKEN: "${{ secretes.token }}"
 
       - name: 'Extract Repository Metadata'
         id: repository_metadata
@@ -118,7 +118,7 @@ jobs:
       - name: Publish Helm charts
         uses: stefanprodan/helm-gh-pages@master
         with:
-          token: "${{ github.token }}"
+          token: "${{ secrets.token }}"
           app_version: "${{ github.ref_name }}"
           chart_version: "${{ github.ref_name }}"
 
