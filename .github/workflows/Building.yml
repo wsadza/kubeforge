@@ -107,7 +107,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v4
         env:
-          GITHUB_TOKEN: "${{ secretes.token }}"
+          GITHUB_TOKEN: "${{ secrets.token }}"
 
       - name: 'Extract Repository Metadata'
         id: repository_metadata
