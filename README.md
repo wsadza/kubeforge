@@ -26,7 +26,7 @@ $$ | \$$\\$$$$$$  |$$$$$$$  |\$$$$$$$\ $$ |     \$$$$$$  |$$ |      \$$$$$$$ |\$
                                                                     \$$$$$$  |          
                                                                      \______/                         
 --->
-# KubeForge
+# Kubeforge
 <img src="./.media/assets/sections/assets_sections_a.png" align="left" width="5%" height="auto"/>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -132,7 +132,7 @@ $$$$$$$  |$$$$$$$$\    \$  /   $$$$$$$$\ $$$$$$$$\ $$$$$$  |$$ |      $$ | \_/ $
 ## Development
 <sup>[(Back to top)](#table-of-contents)</sup>
 
-<img src="./.media/asset/section/asset_section_e.png" align="left" width="5%" height="auto"/>
+<img src="./.media/assets/sections/assets_sections_e.png" align="left" width="5%" height="auto"/>
 
 This section explains how we build our software, focusing on different structures like monolithic and distributed systems. You will also find information about our development workflows, including continuous integration and delivery.
 
@@ -164,7 +164,7 @@ $$ | \_/ $$ |$$$$$$\ \$$$$$$  |\$$$$$$  |
 ## Miscellaneous
 <sup>[(Back to top)](#table-of-contents)</sup>
 
-<img src="./.media/asset/section/asset_section_f.png" align="left" width="5%" height="auto"/>
+<img src="./.media/assets/sections/assets_sections_f.png" align="left" width="5%" height="auto"/>
 
 The "Miscellaneous" section gathers various resources and content that may not belong to a specific category but are still valuable and worth referencing. It's a place for extra tools, tips, and information that support a wide range of needs.
 
