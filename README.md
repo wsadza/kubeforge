@@ -63,10 +63,10 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
 --->
 ## Preview
 <div align="center">
-   <sup><code>It was easy, right?</code></sup>
+   <sup><code>The brainchild behind the Kubeforge controller!</code></sup>
    <br>
    <div style="width: 800; height: auto; background-color: black;">
-      <img src="./.media/previews/previews_idea.png" width="800" height="auto"/>   
+      <img src="./.media/previews/previews_concept.png" width="650" height="auto"/>   
    </div>   
 </div>
 
