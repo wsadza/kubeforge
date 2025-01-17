@@ -49,6 +49,7 @@ The Kubeforge Controller is a Kubernetes-native solution built around the Kubern
 helm repo add kubeforge https://wsadza.github.io/kubeforge;
 helm repo update;
 helm install kubeforge kubeforge/kubeforge;
+helm test kubeforge;
 ```
 
 <!---
