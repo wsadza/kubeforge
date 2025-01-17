@@ -29,7 +29,11 @@ $$ | \$$\\$$$$$$  |$$$$$$$  |\$$$$$$$\ $$ |     \$$$$$$  |$$ |      \$$$$$$$ |\$
 # Kubeforge
 <img src="./.media/assets/sections/assets_sections_a.png" align="left" width="5%" height="auto"/>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+The Kubeforge Controller is a Kubernetes-native solution designed to address the limitations of on-the-fly dynamic provisioning of resources with varying configurations. Built around the Kubernetes controller pattern, it provides a mechanism to dynamically merge user-defined Custom Resource Definitions (CRDs) with default configurations, enabling consistent and automated resource provisioning without manual intervention.
+
+Kubeforge is an on-the-fly dynamic provisioning Kubernetes controller. It facilitates dynamic Kubernetes resource provisioning by combining user-defined Custom Resource Definitions (CRDs) with predefined source configurations (CM).
+
+The Kubeforge Controller is a Kubernetes-native solution built around the Kubernetes controller pattern. It is designed to enable the dynamic creation of Kubernetes Pods and other resources by merging user-defined Custom Resource Definitions (CRDs) with predefined base configurations. The controller simplifies the process of resource generation by applying reusable templates and custom logic.
 
 ##
 <!---
@@ -42,7 +46,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 </h3>
 
 ```sh
-
+helm repo add kubeforge https://wsadza.github.io/kubeforge;
+helm repo update;
+helm install kubeforge kubeforge/kubeforge;
 ```
 
 <!---
