@@ -66,7 +66,7 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
    <sup><code>It was easy, right?</code></sup>
    <br>
    <div style="width: 800; height: auto; background-color: black;">
-      <img src="./.media/native/preview/gif/native_preview_gif_tldr.gif" width="800" height="auto"/>   
+      <img src="./.media/previews/previews_idea.png" width="800" height="auto"/>   
    </div>   
 </div>
 
