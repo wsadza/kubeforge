@@ -59,7 +59,8 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
 --->
 ## Preview
 <div align="center">
-   <sup><code>The brainchild behind the Kubeforge controller!</code></sup>
+   <sup><code>Take a piece of CRD, mix it with the flavor of CM, and voilà, you have your pod!</code></sup>
+   <br>
    <br>
    <div style="width: 600; height: auto; background-color: black;">
       <img src="./.media/previews/previews_concept.png" width="600" height="auto"/>
@@ -115,6 +116,7 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
 <h2>Preview</h2>
 <div align="center">
    <sup><code>Did you know that only 22% of reading content is consumed?</code></sup>
+   <br>
    <br>
    <div style="width: 1200; height: auto; background-color: black;">
       <img src="./.media/previews/previews_concept.gif" align="center" width="1200" height="auto"/>   
