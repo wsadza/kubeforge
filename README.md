@@ -12,8 +12,8 @@
    <img src="https://labl.es/svg?text=Helm&width=200&bgcolor=154360" align="center" style="margin: 5px"/>
 
    <div align="center" style="display: flex; gap: 5px; justify-content: center;">
-      <img src="https://labl.es/svg?text=GPU%20Sharing&width=200&bgcolor=a50068" align="center"/>
-      <img src="https://labl.es/svg?text=VDI&width=200&bgcolor=d35400" align="center"/>
+      <img src="https://labl.es/svg?text=Controller&width=200&bgcolor=a50068" align="center"/>
+      <img src="https://labl.es/svg?text=Dynamic&width=200&bgcolor=d35400" align="center"/>
    </div>
    
 </div>
@@ -46,22 +46,42 @@ The Kubeforge is a Kubernetes-native solution that addresses the limitations of 
    $\large\color{Goldenrod}{\textbf{TL;DR}}$
 </h3>
 
+
 <details>
-<summary>$\color{green}{\textsf{Installation:}}$</summary>
+<summary>$\color{#FAFAD2}{\textsf{Preparation}}$</summary>
 <br>
+<p>Add the Helm chart repository.</p>
    
     helm repo add kubeforge https://wsadza.github.io/kubeforge;
     helm repo update;
-    helm install kubeforge kubeforge/kubeforge;
 
+</details>   
+
+<details>
+<summary>$\color{#EEE8AA}{\textsf{Installation}}$</summary>
+<br>
+<p>Install the Kubeforge Helm chart with a customized source configuration.</p>
+
+    cat <<EOF helm install kubeforge kubeforge/kubeforge -f -
+    kubeforge:
+      sourceConfiguration:
+        Pod:
+        - metadata:
+            name: bannana-pod 
+          spec:
+            containers:
+              - name: bannana 
+                command: [ "tail", "-f", "/dev/null" ]
+    EOF
+    
 </details>
 
 <details>
-<summary>$\color{green}{\textsf{Execution:}}$</summary>
+<summary>$\color{#F0E68C}{\textsf{Usage}}$</summary>
 <br>
+<p>Create a Kubeforge overlay resource to provision the "banana-pod" resource.</p>
    
     cat <<EOF | kubectl apply -f -
-    ---
     apiVersion: kubeforge.sh/v1
     kind: Overlay
     metadata:
@@ -71,13 +91,11 @@ The Kubeforge is a Kubernetes-native solution that addresses the limitations of 
         Pod:
           - metadata:
               name: bannana-pod 
-              annotations:
-                kubeforge.sh/override-name: "mybannana-pod"
             spec:
               containers:
               - name: bannana 
                 image: busybox 
-      EOF
+    EOF
 
 </details>   
 
@@ -137,6 +155,7 @@ This section provides guidance on deploying and configuring streaming instances 
   - $\large\color{Goldenrod}{\textbf{Usage}}$
      - [Usage `Standalone`](./.docs/10_usage/USAGE.md#usage---docker) 
      - [Usage `Kubernetes`](./.docs/10_usage/USAGE.md#usage---docker-compose)
+  - $\large\color{Goldenrod}{\textbf{Configuration}}$ 
 
 <!---
 $$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
