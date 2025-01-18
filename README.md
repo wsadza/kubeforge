@@ -7,13 +7,13 @@
    <br>
   
    <!-- labels -->
-   <img src="https://labl.es/svg?text=%20Provisoring&width=200&bgcolor=a93226" align="center" style="margin: 5px"/>
+   <img src="https://labl.es/svg?text=Resource%20Provisoring&width=200&bgcolor=a93226" align="center" style="margin: 5px"/>
    <img src="https://labl.es/svg?text=Kubernetes&width=200&bgcolor=1e8449" align="center" style="margin: 5px"/>
    <img src="https://labl.es/svg?text=Helm&width=200&bgcolor=154360" align="center" style="margin: 5px"/>
 
    <div align="center" style="display: flex; gap: 5px; justify-content: center;">
       <img src="https://labl.es/svg?text=Controller&width=200&bgcolor=a50068" align="center"/>
-      <img src="https://labl.es/svg?text=Dynamic&width=200&bgcolor=d35400" align="center"/>
+      <img src="https://labl.es/svg?text=Resource%20Management&width=200&bgcolor=d35400" align="center"/>
    </div>
    
 </div>
