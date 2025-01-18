@@ -66,8 +66,9 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
 <div align="center">
    <sup><code>The brainchild behind the Kubeforge controller!</code></sup>
    <br>
-   <div style="width: 800; height: auto; background-color: black;">
-      <img src="./.media/previews/previews_concept.png" width="650" height="auto"/>   
+   <br>
+   <div style="width: 1200; height: auto; background-color: black;">
+      <img src="./.media/previews/preview_concept.gif" align="center" width="1200" height="auto"/>   
    </div>   
 </div>
 
