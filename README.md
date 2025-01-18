@@ -7,9 +7,14 @@
    <br>
   
    <!-- labels -->
-   <img src="https://labl.es/svg?text=Dynamic%20Provisoring&width=200&bgcolor=a93226" align="center" style="margin: 5px"/>
-   <img src="https://labl.es/svg?text=Kubernetes%20Controller&width=200&bgcolor=1e8449" align="center" style="margin: 5px"/>
-   <img src="https://labl.es/svg?text=Helm%20Chart&width=200&bgcolor=154360" align="center" style="margin: 5px"/>
+   <img src="https://labl.es/svg?text=%20Provisoring&width=200&bgcolor=a93226" align="center" style="margin: 5px"/>
+   <img src="https://labl.es/svg?text=Kubernetes&width=200&bgcolor=1e8449" align="center" style="margin: 5px"/>
+   <img src="https://labl.es/svg?text=Helm&width=200&bgcolor=154360" align="center" style="margin: 5px"/>
+
+   <div align="center" style="display: flex; gap: 5px; justify-content: center;">
+      <img src="https://labl.es/svg?text=GPU%20Sharing&width=200&bgcolor=a50068" align="center"/>
+      <img src="https://labl.es/svg?text=VDI&width=200&bgcolor=d35400" align="center"/>
+   </div>
    
 </div>
 
@@ -29,23 +34,53 @@ $$ | \$$\\$$$$$$  |$$$$$$$  |\$$$$$$$\ $$ |     \$$$$$$  |$$ |      \$$$$$$$ |\$
 # Kubeforge
 <img src="./.media/assets/sections/assets_sections_a.png" align="left" width="5%" height="auto"/>
 
-The Kubeforge Controller is a Kubernetes-native solution that addresses the limitations of dynamic resource provisioning. It uses the Kubernetes controller pattern to merge user-defined Custom Resource Definitions (CRDs) with default configuration, enabling consistent and automated resource provisioning.
+The Kubeforge is a Kubernetes-native solution that addresses the limitations of dynamic resource provisioning. It uses the Kubernetes controller pattern to merge user-defined Custom Resource Definitions (CRDs) with source pre-definied configuration, enabling consistent and automated resource provisioning.
 
 ##
 <!---
 #####################################################
-# Installation
+# TL;DR
 #####################################################
 --->
-<h3 id="Installation">
-   $\large\color{Goldenrod}{\textbf{Installation}}$
+<h3 id="tldr">
+   $\large\color{Goldenrod}{\textbf{TL;DR}}$
 </h3>
 
-```sh
-helm repo add kubeforge https://wsadza.github.io/kubeforge;
-helm repo update;
-helm install kubeforge kubeforge/kubeforge;
-```
+<details>
+<summary>$\color{green}{\textsf{Installation:}}$</summary>
+<br>
+   
+    helm repo add kubeforge https://wsadza.github.io/kubeforge;
+    helm repo update;
+    helm install kubeforge kubeforge/kubeforge;
+
+</details>
+
+<details>
+<summary>$\color{green}{\textsf{Execution:}}$</summary>
+<br>
+   
+    cat <<EOF | kubectl apply -f -
+    ---
+    apiVersion: kubeforge.sh/v1
+    kind: Overlay
+    metadata:
+      name: "bannana" 
+    spec:
+      data:
+        Pod:
+          - metadata:
+              name: bannana-pod 
+              annotations:
+                kubeforge.sh/override-name: "mybannana-pod"
+            spec:
+              containers:
+              - name: bannana 
+                image: busybox 
+      EOF
+
+</details>   
+
 
 <!---
 $$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
@@ -154,6 +189,25 @@ This section explains how we build our software, focusing on different structure
      - Development - Workflow - CD
    <sup><img src="https://labl.es/svg?text=WIP&bgcolor=F7DC6F" align="center"/></sup>
 
+<!---
+$$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
+$$  __$$\ $$  __$$\ $$  _____|$$ |   $$ |\_$$  _|$$  _____|$$ | $\  $$ |
+$$ |  $$ |$$ |  $$ |$$ |      $$ |   $$ |  $$ |  $$ |      $$ |$$$\ $$ |
+$$$$$$$  |$$$$$$$  |$$$$$\    \$$\  $$  |  $$ |  $$$$$\    $$ $$ $$\$$ |
+$$  ____/ $$  __$$< $$  __|    \$$\$$  /   $$ |  $$  __|   $$$$  _$$$$ |
+$$ |      $$ |  $$ |$$ |        \$$$  /    $$ |  $$ |      $$$  / \$$$ |
+$$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
+\__|      \__|  \__|\________|    \_/    \______|\________|\__/     \__|
+--->
+<h2>Preview</h2>
+<div align="center">
+   <sup><code>Sequences! We love sequences, right?</code></sup>
+   <br>
+   <br>
+   <div style="width: 800; height: auto; background-color: black;">
+      <img src="./.media/previews/previews_sequence.png" align="center" width="800" height="auto"/>   
+   </div>
+</div>
 
 <!---
 $$\      $$\ $$$$$$\  $$$$$$\   $$$$$$\  
