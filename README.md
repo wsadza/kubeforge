@@ -29,27 +29,22 @@ $$ | \$$\\$$$$$$  |$$$$$$$  |\$$$$$$$\ $$ |     \$$$$$$  |$$ |      \$$$$$$$ |\$
 # Kubeforge
 <img src="./.media/assets/sections/assets_sections_a.png" align="left" width="5%" height="auto"/>
 
-The Kubeforge Controller is a Kubernetes-native solution designed to address the limitations of on-the-fly dynamic provisioning of resources with varying configurations. Built around the Kubernetes controller pattern, it provides a mechanism to dynamically merge user-defined Custom Resource Definitions (CRDs) with default configurations, enabling consistent and automated resource provisioning without manual intervention.
-
-Kubeforge is an on-the-fly dynamic provisioning Kubernetes controller. It facilitates dynamic Kubernetes resource provisioning by combining user-defined Custom Resource Definitions (CRDs) with predefined source configurations (CM).
-
-The Kubeforge Controller is a Kubernetes-native solution built around the Kubernetes controller pattern. It is designed to enable the dynamic creation of Kubernetes Pods and other resources by merging user-defined Custom Resource Definitions (CRDs) with predefined base configurations. The controller simplifies the process of resource generation by applying reusable templates and custom logic.
+The Kubeforge Controller is a Kubernetes-native solution that addresses the limitations of dynamic resource provisioning. It uses the Kubernetes controller pattern to merge user-defined Custom Resource Definitions (CRDs) with default configuration, enabling consistent and automated resource provisioning.
 
 ##
 <!---
 #####################################################
-# TL;DR
+# Installation
 #####################################################
 --->
-<h3 id="tldr">
-   $\large\color{Goldenrod}{\textbf{TL;DR}}$
+<h3 id="Installation">
+   $\large\color{Goldenrod}{\textbf{Installation}}$
 </h3>
 
 ```sh
 helm repo add kubeforge https://wsadza.github.io/kubeforge;
 helm repo update;
 helm install kubeforge kubeforge/kubeforge;
-helm test kubeforge;
 ```
 
 <!---
@@ -66,10 +61,9 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
 <div align="center">
    <sup><code>The brainchild behind the Kubeforge controller!</code></sup>
    <br>
-   <br>
-   <div style="width: 1200; height: auto; background-color: black;">
-      <img src="./.media/previews/preview_concept.gif" align="center" width="1200" height="auto"/>   
-   </div>   
+   <div style="width: 600; height: auto; background-color: black;">
+      <img src="./.media/previews/previews_concept.png" width="600" height="auto"/>
+   </div>      
 </div>
 
 <!---
@@ -120,11 +114,11 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
 --->
 <h2>Preview</h2>
 <div align="center">
-   <sup><code>Steam? No Problem!</code></sup>
+   <sup><code>Did you know that only 22% of reading content is consumed?</code></sup>
    <br>
-   <div style="width: 800; height: auto; background-color: black;">
-      <img src="./.media/native/preview/gif/native_preview_gif_steam.gif" width="800" height="auto"/>
-   </div>   
+   <div style="width: 1200; height: auto; background-color: black;">
+      <img src="./.media/previews/previews_concept.gif" align="center" width="1200" height="auto"/>   
+   </div>
 </div>
 
 <!---
