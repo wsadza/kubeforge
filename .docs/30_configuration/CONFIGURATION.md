@@ -3,7 +3,6 @@
    <img src="../../.media/assets/badges/assets_badges_project_backgroundless.png" width="15%" height="auto"/>
 </div>
 
-
 <!---
 #####################################################
 # Configuration - Helm
@@ -14,7 +13,10 @@
 <br>
 <!--- CONTENT --->
 
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+The Helm chart follows the <code>library</code> pattern, containing all reusable functions. All variables are parameterized, ensuring there are no hardcoded values or unnecessary volumes within the deployment.
+
+- [Helm - `Library`](../../charts/kubeforge/templates/kubeforge/_helpers.tpl)
+- [Helm - `Values`](../../charts/kubeforge/values.yaml)
 
 ##
 
@@ -28,8 +30,7 @@ It is a long established fact that a reader will be distracted by the readable c
 <br>
 <!--- CONTENT --->
 
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
+The overlay configuration works in conjunction with the source configuration. The source configuration serves as the foundation, while the overlay configuration provides the final adjustments overriding or adding elements to the source configuration. This approach allows you to retain 99% of your original configuration and only modify the 1% that differs from the base.
 
 <!-- list -->   
 <ul>
