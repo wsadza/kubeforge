@@ -2,233 +2,152 @@
    <img src="../../.media/assets/badges/assets_badges_project_backgroundless.png" width="15%" height="auto"/>
 </div>
 
-## Template
+<!---
+#####################################################
+# Usage - Standalone
+#####################################################
+--->
+### Usage - Standalone
+<sup>[(Back to Readme)](../../README.md#usage)</sup>
+<br>
+<!--- CONTENT --->
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non gravida diam. Nam dignissim pharetra convallis. Nunc maximus porttitor sem. Proin non maximus ipsum. Vivamus quis ornare dui.
 
+<!-- list -->   
+<ul>
+
+   <!-- element [0] -->    
+   <li>
+   <details>
+   <summary>Preparation</summary>
+   <br>
+   <p>Prepare the <code>Kubeforge</code> source configuration as a foundation for the next steps.</p>
+      
+      cat <<EOF > "${PWD}/sourceConfiguration.yml"
+      Pod:
+      - metadata:
+          name: bannana-pod 
+        spec:
+          containers:
+          - name: bannana 
+            command: [ "tail", "-f", "/dev/null" ]
+      EOF
+            
+   </details>
+   </li>   
+
+   <!-- element [1] -->    
+   <li>
+   <details>
+   <summary>Installation</summary>
+
+   <br>
+   <p></p>
+   
+    ---
+    apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      name: overlays.kubeforge.sh
+    spec:
+      group: kubeforge.sh 
+      versions:
+        - name: v1
+          served: true
+          storage: true
+          schema:
+    
+            # schema used for validation
+            openAPIV3Schema:
+              type: object
+              properties:
+                spec:
+                  type: object
+                  # Allows any arbitrary structure under `spec` by omitting "properties"
+                  # and adding the "x-kubernetes-preserve-unknown-fields" flag                
+                  x-kubernetes-preserve-unknown-fields: true
+                status:
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+          subresources:
+            status: {}
+      names:
+        kind: Overlay 
+        plural: overlays 
+      scope: Namespaced
+    ...
+
+   <br>
+   <p>Execute the <code>Kubeforge</code> docker container with mounted kubeconfig and source configuration.</p>
+      
+    docker run \
+       --volume "${HOME}/.kube/config:/opt/.kube/config" \
+       --volume "${PWD}/sourceConfiguration.yml:/opt/sourceConfiguration.yml"
+       --environment KUBEFORGE_KUBERNETES_CONFIG=/opt/.kube/config \
+       --environment KUBEFORGE_SOURCE_CONFIGURATION=/opt/sourceConfiguration.yml \
+    ghcr.io/wsadza/kubeforge 
+   
+   </details>
+   </li>
+   <!-- element [1] --> 
+   
+   <!-- element [2] -->    
+   <li>
+   <details>
+   <summary>Usage</summary>
+   <br>
+   <p>Create a <code>Kubeforge</code> overlay resource to provision the "banana-pod"</p>
+    
+    cat <<EOF | kubectl apply -f -
+    apiVersion: kubeforge.sh/v1
+    kind: Overlay
+    metadata:
+      name: "bannana" 
+    spec:
+      data:
+        Pod:
+          - metadata:
+              name: bannana-pod 
+            spec:
+              containers:
+              - name: bannana 
+                image: busybox 
+    EOF
+      
+   </details>
+   </li>
+   <!-- element [2] --> 
+
+</ul>
+
+
+
+
 ##
+
 <!---
 #####################################################
-# TLDR
+# Usage - Kubernetes
 #####################################################
 --->
+### Usage - Kubernetes
+<sup>[(Back to Readme)](../../README.md#usage)</sup>
+<br>
+<!--- CONTENT --->
 
-### TLDR: 
-> [!NOTE]  
-> TLDR
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non gravida diam. Nam dignissim pharetra convallis. Nunc maximus porttitor sem. Proin non maximus ipsum. Vivamus quis ornare dui.
+
 
 ```sh
-SOME CONTENT
+TEST
 ```
 
-##
-<!---
-$$$$$$$$\  $$$$$$\   $$$$$$\  
-\__$$  __|$$  __$$\ $$  __$$\ 
-   $$ |   $$ /  $$ |$$ /  \__|
-   $$ |   $$ |  $$ |$$ |      
-   $$ |   $$ |  $$ |$$ |      
-   $$ |   $$ |  $$ |$$ |  $$\ 
-   $$ |    $$$$$$  |\$$$$$$  |
-   \__|    \______/  \______/
---->
-
-### Table Of Contents:
-- [Section-A](#section-a)
-- [Section-B](#section-b)
-
-### Section-A
-<sup>[(Back to top)](#table-of-contents)</sup>
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non gravida diam. Nam dignissim pharetra convallis. Nunc maximus porttitor sem. Proin non maximus ipsum. Vivamus quis ornare dui.
-
-### Section-B
-<sup>[(Back to top)](#table-of-contents)</sup>
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non gravida diam. Nam dignissim pharetra convallis. Nunc maximus porttitor sem. Proin non maximus ipsum. Vivamus quis ornare dui.
-
-##
-
+<br>
+<br>
 <div align="center">
    <img src="../../.media/assets/badges/assets_badges_project_backgroundless.png" width="15%" height="auto"/>
 </div>
-
-<hr>
-
-<div align="left">
-<h1>Assets To Use</h1>
-</div>
-
-> [!TIP]
-> - GPT is awsome tool to generate list stuff.
-> - GPT is awsome tool to rephrasing your thoughts.
-> - Use [jdenticon](https://jdenticon.com/) for awsome icons!
-> - For labels use [labl.es](https://labl.es/).
-> - Less Is More!
-> - Keep It Super Simple!
-> - Check [github markdown icons](https://gist.github.com/rxaviers/7360908).
-> - [Markdown highlights options](https://github.com/orgs/community/discussions/16925)
-> - [Makrdown color text](https://gist.github.com/luigiMinardi/4574708d404cdf4fe0da7ac6fe2314db)
-
-##
-
-#### Label:
-<img src="https://labl.es/svg?text=LABEL&width=200&bgcolor=3a6351"/>
-
-##
-
-#### Details: (variant-a)
-
-<details><summary>Setup: 📍</summary><br>
- 
-    #!/bin/bash
-    # YOUR-CODE-GOES-HERE
-    
-</details>
-
-#### Details: (variant-b)
-
-<details><summary>Configuration: 📍</summary>
- <!-- list -->   
- <ul>
-  
-   <!-- element [0] -->    
-   <li>
-   <p>YOUR-PARAGRAPH</p>
-   <pre><code>YOUR-CODE</code></pre>
-   </li>
-   <!-- #element [0] -->
-  
-   <!-- element [1] -->  
-   <li>
-   <details open>
-       <summary>YOUR-SUMMARY:📍</summary>
-       <br>
-    
-    #!/bin/bash
-    # YOUR-CODE-GOES-HERE
-            
-   </details>
-   </li>
-   <!-- #element [1] -->
-
-   <!-- element [2] -->  
-   <li>
-    <details>
-        <summary>YOUR-SUMMARY:📍</summary>
-        <ul>
-          <li>
-            <p>YOUR-PARAGRAPH</p>
-            <pre><code>YOUR-CODE</code></pre>
-          </li>   
-        </ul>
-    </details>
-   </li>
-   <!-- #element [2] -->
-      
- </ul>
- <!-- #list -->    
-</details>
-
-##
-
-#### List: (variant-a)
-- <details>
-    <summary>List (variant-a)</summary>
-    <br>
-    <ul>
-      <sup>
-        <li><a href="element-a">element-a</a></li>
-      </sup>
-      <br>
-      <sup>
-        <li><a href="element-b">element-b</a></li>
-      </sup>
-    </ul>
-  </details>  
-
-#### List: (variant-b)
-> [!TIP]
-> <details>
->  <summary>List (variant-b)</summary>
->    <br>
-> <ul>
->    <li><a href="element-a">element-a</a></li>
->    <li><a href="element-b">element-b</a></li>
-> </ul>
-> </table>
-> </details>
-
-#### List: (variant-c)
-<details>
-  <summary>List (variant-c): 📍</summary>
-  <br>  
-  <table>
-      <tr>
-          <td><strong>COLUMN-A</strong></td>
-          <td><strong>COLUMN-B</strong></td>
-          <td><strong>COLUMN-C</strong></td>
-      </tr>
-      <tr>
-          <td><sup>Element-A-A</sup></td>
-          <td><sup>Element-A-B</sup></td>
-          <td><sup>Element-A-C</sup></td>
-      </tr>
-      <tr>
-          <td><sup>Element-B-A</sup></td>
-          <td><sup>Element-B-B</sup></td>
-          <td><sup>Element-B-C</sup></td>
-      </tr>
-  </table>
-</details>
-
-##
-
-#### Table: (variant-a)
-
-<table>
-   <tr>
-       <td><strong>COLUMN-A</strong></td>
-       <td><strong>COLUMN-B</strong></td>
-       <td><strong>COLUMN-C</strong></td>
-   </tr>
-   <tr>
-       <td><sup>Element-A-A</sup></td>
-       <td><sup>Element-A-B</sup></td>
-       <td><sup>Element-A-C</sup></td>
-   </tr>
-   <tr>
-       <td><sup>Element-B-A</sup></td>
-       <td><sup>Element-B-B</sup></td>
-       <td><sup>Element-B-C</sup></td>
-   </tr>
-</table>
-
-##
-
-#### Comments:
-
-Use [text-to-ascii](https://patorjk.com/software/taag/#p=display&f=Big%20Money-nw&t=Type%20Something%20%0A) for separate sections.
-```
-<!---
- $$$$$$\  $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$\  $$$$$$\  $$\   $$\ 
-$$  __$$\ $$  _____|$$  __$$\\__$$  __|\_$$  _|$$  __$$\ $$$\  $$ |
-$$ /  \__|$$ |      $$ /  \__|  $$ |     $$ |  $$ /  $$ |$$$$\ $$ |
-\$$$$$$\  $$$$$\    $$ |        $$ |     $$ |  $$ |  $$ |$$ $$\$$ |
- \____$$\ $$  __|   $$ |        $$ |     $$ |  $$ |  $$ |$$ \$$$$ |
-$$\   $$ |$$ |      $$ |  $$\   $$ |     $$ |  $$ |  $$ |$$ |\$$$ |
-\$$$$$$  |$$$$$$$$\ \$$$$$$  |  $$ |   $$$$$$\  $$$$$$  |$$ | \$$ |
- \______/ \________| \______/   \__|   \______| \______/ \__|  \__|
---->
-## Section
-```
-
-Use snippet below for subsections.
-```
-##
-<!---
-#####################################################
-# SUBSECTION
-#####################################################
---->
-```
