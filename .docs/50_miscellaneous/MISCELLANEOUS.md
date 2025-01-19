@@ -59,6 +59,9 @@ $\color{yellow}{\textsf{Helpful Resources - TODO List}}$
    -  Helm Chart corrections; Delete unnessesary entries; 
 - [ ] $\color{#FF7F50}{\textsf{Helm Installation}}$
    -  Better Helm documentation; Learn how to document Helm Charts in proper way;
+- [ ] $\color{#FF7F50}{\textsf{Examples}}$
+   - Add more examples; How it works; Some gifs?
+   - Add ArgoCD view? 
 
 <br>
 <br>
