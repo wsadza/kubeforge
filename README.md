@@ -55,8 +55,7 @@ The Kubeforge is a Kubernetes-native solution that addresses the limitations of 
 <br>
 <p>Add the Helm chart repository.</p>
    
-    helm repo add kubeforge https://wsadza.github.io/kubeforge;
-    helm repo update;
+    helm repo add kubeforge https://wsadza.github.io/kubeforge && helm repo update
 
 </details>   
 
