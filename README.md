@@ -62,7 +62,7 @@ The Kubeforge is a Kubernetes-native solution that addresses the limitations of 
 <details>
 <summary>$\color{#EEE8AA}{\textsf{Installation}}$</summary>
 <br>
-<p>Install the Kubeforge Helm chart with a customized source configuration.</p>
+<p>Install the <code>Kubeforge</code> Helm chart with a customized source configuration.</p>
 
     cat <<EOF | helm install kubeforge kubeforge/kubeforge -f -
     kubeforge:
@@ -139,25 +139,25 @@ $$$$$$$$\  $$$$$$\   $$$$$$\
 - [Miscellaneous](#miscellaneous)
 
 <!---
-$$\   $$\  $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$$\ 
-$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\ $$  _____|
-$$ |  $$ |$$ /  \__|$$ /  $$ |$$ /  \__|$$ |      
-$$ |  $$ |\$$$$$$\  $$$$$$$$ |$$ |$$$$\ $$$$$\    
-$$ |  $$ | \____$$\ $$  __$$ |$$ |\_$$ |$$  __|   
-$$ |  $$ |$$\   $$ |$$ |  $$ |$$ |  $$ |$$ |      
-\$$$$$$  |\$$$$$$  |$$ |  $$ |\$$$$$$  |$$$$$$$$\ 
- \______/  \______/ \__|  \__| \______/ \________|
+$$$$$$\                       $$\               $$\ $$\            $$\     $$\                     
+\_$$  _|                      $$ |              $$ |$$ |           $$ |    \__|                    
+  $$ |  $$$$$$$\   $$$$$$$\ $$$$$$\    $$$$$$\  $$ |$$ | $$$$$$\ $$$$$$\   $$\  $$$$$$\  $$$$$$$\  
+  $$ |  $$  __$$\ $$  _____|\_$$  _|   \____$$\ $$ |$$ | \____$$\\_$$  _|  $$ |$$  __$$\ $$  __$$\ 
+  $$ |  $$ |  $$ |\$$$$$$\    $$ |     $$$$$$$ |$$ |$$ | $$$$$$$ | $$ |    $$ |$$ /  $$ |$$ |  $$ |
+  $$ |  $$ |  $$ | \____$$\   $$ |$$\ $$  __$$ |$$ |$$ |$$  __$$ | $$ |$$\ $$ |$$ |  $$ |$$ |  $$ |
+$$$$$$\ $$ |  $$ |$$$$$$$  |  \$$$$  |\$$$$$$$ |$$ |$$ |\$$$$$$$ | \$$$$  |$$ |\$$$$$$  |$$ |  $$ |
+\______|\__|  \__|\_______/    \____/  \_______|\__|\__| \_______|  \____/ \__| \______/ \__|  \__|
 --->
 
-## Usage
+## Installation
 <sup>[(Back to Top)](#table-of-contents)</sup><br>
 
-This section provides guidance on deploying and configuring a Kubeforge instance. Whether you want to test it or install it on your Kubernetes cluster, below are two methods for using the Kubeforge controller.
+This section offers instructions for installing a Kubeforge controller. Whether you're looking to test it or deploy it on your Kubernetes cluster, here are two methods you can follow.
 
 ### Table Of Contents:
-  - $\large\color{Goldenrod}{\textbf{Usage}}$
-     - [Usage `Standalone`](./.docs/10_usage/USAGE.md#usage---docker) 
-     - [Usage `Kubernetes`](./.docs/10_usage/USAGE.md#usage---kubernetes)
+  - $\large\color{Goldenrod}{\textbf{Installation}}$
+     - [Usage `Standalone`](./.docs/10_installation/INSTALLATION.md#installation---docker) 
+     - [Usage `Kubernetes`](./.docs/10_installation/INSTALLATION.md#installation---kubernetes)
 
 <!---
 $$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
