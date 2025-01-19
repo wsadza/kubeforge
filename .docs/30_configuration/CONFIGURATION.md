@@ -42,7 +42,7 @@ It is a long established fact that a reader will be distracted by the readable c
    <ul>
    <!-- element [0][0] -->
    <li>
-   <p>Prepare the <code>Kubeforge</code> source configuration as a foundation for the next steps.</p>
+   <p>The source configuration defines a template to be used for the overlays.</p>
       
     # @kubernetes pod(s) configuration
     Pod:
@@ -58,6 +58,9 @@ It is a long established fact that a reader will be distracted by the readable c
     
     # @kubernetes cm(s) configurations
     #ConfigMap:
+
+    # @kubernetes pv(s) configurations
+    #PersistentVolume:    
       
    </details>
    </li>
@@ -65,39 +68,98 @@ It is a long established fact that a reader will be distracted by the readable c
    <!-- element [1] -->      
    <li>
    <details>
-   <summary>$\color{#FAFAD2}{\textsf{Overlay}}$</summary>
+   <summary>$\color{#EEE8AA}{\textsf{Overlay}}$</summary>
 
    <ul>
    <!-- element [1][0] -->     
    <li>
-   <p>Prepare the <code>Kubeforge</code> source configuration as a foundation for the next steps.</p>
+   <p>The overlay configuration overrides the source configuration using the <code>names</code> field as the reference point during the merging process.</p>
       
-      cat <<EOF > "${PWD}/sourceConfiguration.yml"
-      Pod:
-      - metadata:
-          name: bannana-pod 
-        spec:
-          containers:
-          - name: bannana 
-            command: [ "tail", "-f", "/dev/null" ]
-      EOF
+    apiVersion: kubeforge.sh/v1
+    kind: Overlay
+    metadata:
+      name: "bannana" 
+    spec:
+      data:
+        Pod:
+          - metadata:
+              name: bannana-pod 
+            spec:
+              containers:
+              - name: bannana 
+                image: busybox 
       
    <!-- element [1][1] -->  
    <li>
    <details>
-   <summary>Examples</summary>
+   <summary>$\color{#EE82EE}{\textsf{Examples}}$</summary>
    <br>
-   <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+   <p>Here are two examples of overlays, <code>banana</code> and <code>apple</code>, each utilizing the source configuration defined above. <br>The resulting outputs will be the pods named <code>mybanana-pod</code> and <code>myapple-pod</code></p>
 
    <ul>
    <!-- element [1][1][0] -->     
    <li>
    <details>
-   <summary>$\color{#FAFAD2}{\textsf{Bannana}}$</summary>
+   <summary>$\color{#DA70D6}{\textsf{Bannana}}$</summary>
    <br>
       
-      dd
-      dd
+    ---
+    apiVersion: kubeforge.sh/v1
+    kind: Overlay
+    metadata:
+      name: "bannana" 
+      annotations:
+        "helm.sh/hook": test
+    spec:
+      data:
+    # @kubernetes pod(s) configurations
+        Pod:
+          - metadata:
+              # name should match with sourceConfiguration
+              name: bannana-pod 
+              annotations:
+                # "metal.io/override-name" annotation allows overriding the final Pod's name
+                # during the manifest rendering phase. Since metadata.name is immutable and used
+                # for merging configurations, the annotation is parsed by the rendering tool
+                # to generate the final Pod name before deployment.
+                kubeforge.sh/override-name: "mybannana-pod"
+            spec:
+              containers:
+                - name: bannana 
+                  image: busybox 
+                  volumeMounts:
+                    - name: bannana-pvc 
+                      mountPath: /opt/config
+                      subPath: config
+              volumes:
+                - name: bannana-pvc 
+                  persistentVolumeClaim:
+                    claimName: bannana-pvc 
+    
+    # @kubernetes pvc(s) configurations
+        PersistentVolumeClaim:
+          - metadata:
+              name: bannana-pvc
+              annotations:
+                magic: "my-bannana-pvc"
+            spec:
+              accessModes:
+                - ReadWriteMany
+              resources:
+                requests:
+                  storage: 20Gi
+              storageClassName: storage-local-retain
+    
+    # @kubernetes cm(s) configurations
+        ConfigMap:
+          - metadata:
+              name: bannana-cm 
+              annotations:
+                magic: "my-bannana-cm"
+            data:
+              config: |
+                lorem-ipsum
+    ...
     
    </details>
    </li>  
@@ -105,11 +167,67 @@ It is a long established fact that a reader will be distracted by the readable c
    <!-- element [1][1][1] -->    
    <li>
    <details>
-   <summary>$\color{#FAFAD2}{\textsf{Apple}}$</summary>
+   <summary>$\color{#BA55D3}{\textsf{Apple}}$</summary>
    <br>
       
-      dd
-      dd
+    ---
+    apiVersion: kubeforge.sh/v1
+    kind: Overlay
+    metadata:
+      name: "apple"
+      annotations:
+        "helm.sh/hook": test
+    spec:
+      data:
+     
+    # @kubernetes pod(s) configurations
+        Pod:
+          - metadata:
+              # name should match with sourceConfiguration
+              name: bannana-pod 
+              annotations:
+                # "metal.io/override-name" annotation allows overriding the final Pod's name
+                # during the manifest rendering phase. Since metadata.name is immutable and used
+                # for merging configurations, the annotation is parsed by the rendering tool
+                # to generate the final Pod name before deployment.
+                kubeforge.sh/override-name: "myapple-pod"
+            spec:
+              containers:
+                - name: bannana 
+                  image: busybox 
+                  volumeMounts:
+                    - name: apple-pvc 
+                      mountPath: /opt/config
+                      subPath: config
+              volumes:
+                - name: apple-pvc 
+                  persistentVolumeClaim:
+                    claimName: apple-pvc 
+    
+    # @kubernetes pvc(s) configurations
+        PersistentVolumeClaim:
+          - metadata:
+              name: apple-pvc
+              annotations:
+                magic: "my-apple-pvc"
+            spec:
+              accessModes:
+                - ReadWriteMany
+              resources:
+                requests:
+                  storage: 20Gi
+              storageClassName: storage-local-retain
+    
+    # @kubernetes cm(s) configurations
+        ConfigMap:
+          - metadata:
+              name: apple-cm 
+              annotations:
+                magic: "my-apple-cm"
+            data:
+              config: |
+                lorem-ipsum
+    ...
     
    </details>
    </li>  
