@@ -65,7 +65,7 @@ The Kubeforge is a Kubernetes-native solution that addresses the limitations of 
 <br>
 <p>Install the Kubeforge Helm chart with a customized source configuration.</p>
 
-    cat <<EOF helm install kubeforge kubeforge/kubeforge -f -
+    cat <<EOF | helm install kubeforge kubeforge/kubeforge -f -
     kubeforge:
       sourceConfiguration:
         Pod:
