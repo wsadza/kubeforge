@@ -157,7 +157,7 @@ This section provides guidance on deploying and configuring streaming instances 
 ### Table Of Contents:
   - $\large\color{Goldenrod}{\textbf{Usage}}$
      - [Usage `Standalone`](./.docs/10_usage/USAGE.md#usage---docker) 
-     - [Usage `Kubernetes`](./.docs/10_usage/USAGE.md#usage---docker-compose)
+     - [Usage `Kubernetes`](./.docs/10_usage/USAGE.md#usage---kubernetes)
 
 <!---
 $$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
