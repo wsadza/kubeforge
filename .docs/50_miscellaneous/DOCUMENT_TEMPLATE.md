@@ -1,5 +1,5 @@
 <div align="center">
-   <img src=".media/assets/badges/assets_badges_project_backgroundless.png" width="15%" height="auto"/>
+   <img src="../../.media/assets/badges/assets_badges_project_backgroundless.png" width="15%" height="auto"/>
 </div>
 
 ## Template
@@ -236,5 +236,5 @@ Use snippet below for subsections.
 <br>
 <br>
 <div align="center">
-   <img src=".media/assets/badges/assets_badges_project_backgroundless.png" width="15%" height="auto"/>
+   <img src="../../.media/assets/badges/assets_badges_project_backgroundless.png" width="15%" height="auto"/>
 </div>
