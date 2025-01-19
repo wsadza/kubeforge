@@ -156,8 +156,8 @@ This section offers instructions for installing a Kubeforge controller. Whether 
 
 ### Table Of Contents:
   - $\large\color{Goldenrod}{\textbf{Installation}}$
-     - [Usage `Standalone`](./.docs/10_installation/INSTALLATION.md#installation---docker) 
-     - [Usage `Kubernetes`](./.docs/10_installation/INSTALLATION.md#installation---kubernetes)
+     - [Installation `Standalone`](./.docs/10_installation/INSTALLATION.md#installation---docker) 
+     - [Installation `Kubernetes`](./.docs/10_installation/INSTALLATION.md#installation---kubernetes)
 
 <!---
 $$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
