@@ -142,7 +142,7 @@ If you want to test <code>Kubeforge</code> without installing it directly on the
 <br>
 <!--- CONTENT --->
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non gravida diam. Nam dignissim pharetra convallis. Nunc maximus porttitor sem. Proin non maximus ipsum. Vivamus quis ornare dui.
+Propose a working method using the <code>Kubeforge</code> controller, with installation streamlined through Helm chart templates.
 
 <!-- list -->   
 <ul>
