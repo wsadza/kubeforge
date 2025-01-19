@@ -16,7 +16,7 @@
 # Helpful Resources - Controller Patterns
 #####################################################
 --->
-<h3 id="helpful-resources---controller---patterns">
+<h3 id="helpful-resources---controller-patterns">
 $\color{yellow}{\textsf{Helpful Resources - Controller Patterns}}$    
 </h3>
 
@@ -41,8 +41,8 @@ $\color{yellow}{\textsf{Helpful Resources - Controller Patterns}}$
 # Helpful Resources - TODO List
 #####################################################
 --->
-<h3 id="helpful-resources---todo---list">
-$\color{yellow}{\textsf{Helpful Resources - TODO List }}$    
+<h3 id="helpful-resources---todo-list">
+$\color{yellow}{\textsf{Helpful Resources - TODO List}}$    
 </h3>
 
 <sup>[(Back to Miscellaneous)](../../README.md#miscellaneous)</sup>
