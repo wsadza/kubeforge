@@ -142,7 +142,7 @@ If you want to test <code>Kubeforge</code> without installing it directly on the
 <br>
 <!--- CONTENT --->
 
-Propose a working method using the <code>Kubeforge</code> controller, with installation streamlined through Helm chart templates.
+The default method of working with <code>Kubeforge</code> is to install it directly on a Kubernetes cluster - installation is streamlined through Helm chart templates.
 
 <!-- list -->   
 <ul>
