@@ -62,7 +62,7 @@ The Kubeforge is a Kubernetes-native solution that addresses the limitations of 
 <details>
 <summary>$\color{#EEE8AA}{\textsf{Installation}}$</summary>
 <br>
-<p>Install the Kubeforge Helm chart with a customized source configuration</p>
+<p>Install the Kubeforge Helm chart with a customized source configuration.</p>
 
     cat <<EOF | helm install kubeforge kubeforge/kubeforge -f -
     kubeforge:
@@ -81,7 +81,7 @@ The Kubeforge is a Kubernetes-native solution that addresses the limitations of 
 <details>
 <summary>$\color{#F0E68C}{\textsf{Usage}}$</summary>
 <br>
-<p>Create a Kubeforge Overlay resource to provision the "banana-pod"</p>
+<p>Create a <code>Kubeforge</code> overlay resource to provision the "banana-pod".</p>
    
     cat <<EOF | kubectl apply -f -
     apiVersion: kubeforge.sh/v1
