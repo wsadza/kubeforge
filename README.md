@@ -37,7 +37,7 @@ $$ | \$$\\$$$$$$  |$$$$$$$  |\$$$$$$$\ $$ |     \$$$$$$  |$$ |      \$$$$$$$ |\$
 The Kubeforge is a Kubernetes-native solution that addresses the limitations of dynamic resource provisioning. It uses the Kubernetes controller pattern to merge user-defined Custom Resource Definitions (CRDs) with source pre-definied configuration, enabling consistent and automated resource provisioning.
 
 > [!NOTE] 
-> Imagine a scenario where each pod within your scope needs to be slightly different, you have the option to install them separately or use Kubeforge. With Kubeforge, you can define the [source configuration](charts/kubeforge/values.yaml#L107-L126) and only operates with [overlays](charts/kubeforge/templates/tests/bannana.yml#L14-L62) resources.
+> Imagine a scenario where each pod within your scope needs to be slightly different (e.g. difrent amount of resource; difrent runtime-class; difrent variables), you have the option to install them separately or use Kubeforge. With Kubeforge, you can define the [source configuration](charts/kubeforge/values.yaml#L107-L126) and only operates with [overlays](charts/kubeforge/templates/tests/bannana.yml#L14-L62) resources.
 
 ##
 <!---
