@@ -36,7 +36,7 @@ $$ | \$$\\$$$$$$  |$$$$$$$  |\$$$$$$$\ $$ |     \$$$$$$  |$$ |      \$$$$$$$ |\$
 
 The Kubeforge is a Kubernetes-native solution that addresses the limitations of dynamic resource provisioning. It uses the Kubernetes controller pattern to merge user-defined Custom Resource Definitions (CRDs) with source pre-definied configuration, enabling consistent and automated resource provisioning.
 
-> [!TIP]
+> [!NOTE] 
 > Imagine a scenario where each pod within your scope needs to be slightly different, you have the option to install them separately or use Kubeforge. With Kubeforge, you can define the [source configuration](charts/kubeforge/values.yaml#L107-L126) and only operates with [overlays](charts/kubeforge/templates/tests/bannana.yml#L14-L62) resources.
 
 ##
@@ -158,7 +158,6 @@ This section provides guidance on deploying and configuring streaming instances 
   - $\large\color{Goldenrod}{\textbf{Usage}}$
      - [Usage `Standalone`](./.docs/10_usage/USAGE.md#usage---docker) 
      - [Usage `Kubernetes`](./.docs/10_usage/USAGE.md#usage---docker-compose)
-  - $\large\color{Goldenrod}{\textbf{Configuration}}$ 
 
 <!---
 $$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
