@@ -12,7 +12,7 @@
 <br>
 <!--- CONTENT --->
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non gravida diam. Nam dignissim pharetra convallis. Nunc maximus porttitor sem. Proin non maximus ipsum. Vivamus quis ornare dui.
+If you want to test <code>Kubeforge</code> without installing it directly on the Kubernetes cluster, you can follow the steps below to run it as a standalone Docker instance.
 
 <!-- list -->   
 <ul>
@@ -20,8 +20,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non
    <!-- element [0] -->    
    <li>
    <details>
-   <summary>Preparation</summary>
-   <br>
+   <summary>$\color{#FAFAD2}{\textsf{Preparation}}$</summary>
+   <ul>
+   <li>
    <p>Prepare the <code>Kubeforge</code> source configuration as a foundation for the next steps.</p>
       
       cat <<EOF > "${PWD}/sourceConfiguration.yml"
@@ -33,17 +34,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non
           - name: bannana 
             command: [ "tail", "-f", "/dev/null" ]
       EOF
-            
-   </details>
-   </li>   
-
-   <!-- element [1] -->    
+   </li>
    <li>
-   <details>
-   <summary>Installation</summary>
-
-   <br>
-   <p></p>
+   <p>Install <code>Kubeforge</code> custom resource definition.</p>
    
     ---
     apiVersion: apiextensions.k8s.io/v1
@@ -80,8 +73,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non
         plural: overlays 
       scope: Namespaced
     ...
+   </li>
+   </ul>
+   </details>
+   </li>   
 
-   <br>
+   <!-- element [1] -->    
+   <li>
+   <details>
+   <summary>$\color{#EEE8AA}{\textsf{Installation}}$</summary>
+   <ul>
+   <li>
    <p>Execute the <code>Kubeforge</code> docker container with mounted kubeconfig and source configuration.</p>
       
     docker run \
@@ -90,7 +92,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non
        --environment KUBEFORGE_KUBERNETES_CONFIG=/opt/.kube/config \
        --environment KUBEFORGE_SOURCE_CONFIGURATION=/opt/sourceConfiguration.yml \
     ghcr.io/wsadza/kubeforge 
-   
+
+   </ul>
    </details>
    </li>
    <!-- element [1] --> 
@@ -98,8 +101,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non
    <!-- element [2] -->    
    <li>
    <details>
-   <summary>Usage</summary>
-   <br>
+   <summary>$\color{#F0E68C}{\textsf{Usage}}$</summary>
+   <ul>
+   <li>
    <p>Create a <code>Kubeforge</code> overlay resource to provision the "banana-pod"</p>
     
     cat <<EOF | kubectl apply -f -
@@ -117,15 +121,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non
               - name: bannana 
                 image: busybox 
     EOF
-      
+    
+   </li>
+   </ul>
    </details>
    </li>
    <!-- element [2] --> 
 
 </ul>
-
-
-
 
 ##
 
