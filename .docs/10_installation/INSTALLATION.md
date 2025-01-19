@@ -4,11 +4,11 @@
 
 <!---
 #####################################################
-# Usage - Standalone
+# Installation - Standalone
 #####################################################
 --->
-### Usage - Standalone
-<sup>[(Back to Readme)](../../README.md#usage)</sup>
+### Installation - Standalone
+<sup>[(Back to Readme)](../../README.md#installation)</sup>
 <br>
 <!--- CONTENT --->
 
@@ -134,11 +134,11 @@ If you want to test <code>Kubeforge</code> without installing it directly on the
 
 <!---
 #####################################################
-# Usage - Kubernetes
+# Installation - Kubernetes
 #####################################################
 --->
-### Usage - Kubernetes
-<sup>[(Back to Readme)](../../README.md#usage)</sup>
+### Installation - Kubernetes
+<sup>[(Back to Readme)](../../README.md#installation)</sup>
 <br>
 <!--- CONTENT --->
 
