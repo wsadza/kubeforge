@@ -134,7 +134,7 @@ $$$$$$$$\  $$$$$$\   $$$$$$\
    \__|    \______/  \______/
 --->
 ## Table Of Contents:
-- [Usage](#usage)
+- [Installation](#installation)
 - [Development](#development)
 - [Miscellaneous](#miscellaneous)
 
