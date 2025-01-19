@@ -25,15 +25,16 @@ If you want to test <code>Kubeforge</code> without installing it directly on the
    <li>
    <p>Prepare the <code>Kubeforge</code> source configuration as a foundation for the next steps.</p>
       
-      cat <<EOF > "${PWD}/sourceConfiguration.yml"
-      Pod:
-      - metadata:
-          name: bannana-pod 
-        spec:
-          containers:
-          - name: bannana 
-            command: [ "tail", "-f", "/dev/null" ]
-      EOF
+    cat <<EOF > "${PWD}/sourceConfiguration.yml"
+    Pod:
+    - metadata:
+        name: bannana-pod 
+      spec:
+        containers:
+        - name: bannana 
+          command: [ "tail", "-f", "/dev/null" ]
+    EOF
+      
    </li>
    <li>
    <p>Install <code>Kubeforge</code> custom resource definition.</p>
