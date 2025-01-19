@@ -135,7 +135,7 @@ $$$$$$$$\  $$$$$$\   $$$$$$\
 --->
 ## Table Of Contents:
 - [Installation](#installation)
-- [Development](#development)
+- [Configuration](#configuration)
 - [Miscellaneous](#miscellaneous)
 
 <!---
@@ -180,35 +180,27 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
 </div>
 
 <!---
-$$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$$$\ $$\       $$$$$$\  $$$$$$$\  $$\      $$\ $$$$$$$$\ $$\   $$\ $$$$$$$$\ 
-$$  __$$\ $$  _____|$$ |   $$ |$$  _____|$$ |     $$  __$$\ $$  __$$\ $$$\    $$$ |$$  _____|$$$\  $$ |\__$$  __|
-$$ |  $$ |$$ |      $$ |   $$ |$$ |      $$ |     $$ /  $$ |$$ |  $$ |$$$$\  $$$$ |$$ |      $$$$\ $$ |   $$ |   
-$$ |  $$ |$$$$$\    \$$\  $$  |$$$$$\    $$ |     $$ |  $$ |$$$$$$$  |$$\$$\$$ $$ |$$$$$\    $$ $$\$$ |   $$ |   
-$$ |  $$ |$$  __|    \$$\$$  / $$  __|   $$ |     $$ |  $$ |$$  ____/ $$ \$$$  $$ |$$  __|   $$ \$$$$ |   $$ |   
-$$ |  $$ |$$ |        \$$$  /  $$ |      $$ |     $$ |  $$ |$$ |      $$ |\$  /$$ |$$ |      $$ |\$$$ |   $$ |   
-$$$$$$$  |$$$$$$$$\    \$  /   $$$$$$$$\ $$$$$$$$\ $$$$$$  |$$ |      $$ | \_/ $$ |$$$$$$$$\ $$ | \$$ |   $$ |   
-\_______/ \________|    \_/    \________|\________|\______/ \__|      \__|     \__|\________|\__|  \__|   \__|
- --->
-## Development
-<sup>[(Back to top)](#table-of-contents)</sup>
+ $$$$$$\   $$$$$$\  $$\   $$\ $$$$$$$$\ $$$$$$\  $$$$$$\  $$\   $$\ $$$$$$$\   $$$$$$\ $$$$$$$$\ $$$$$$\  $$$$$$\  $$\   $$\ 
+$$  __$$\ $$  __$$\ $$$\  $$ |$$  _____|\_$$  _|$$  __$$\ $$ |  $$ |$$  __$$\ $$  __$$\\__$$  __|\_$$  _|$$  __$$\ $$$\  $$ |
+$$ /  \__|$$ /  $$ |$$$$\ $$ |$$ |        $$ |  $$ /  \__|$$ |  $$ |$$ |  $$ |$$ /  $$ |  $$ |     $$ |  $$ /  $$ |$$$$\ $$ |
+$$ |      $$ |  $$ |$$ $$\$$ |$$$$$\      $$ |  $$ |$$$$\ $$ |  $$ |$$$$$$$  |$$$$$$$$ |  $$ |     $$ |  $$ |  $$ |$$ $$\$$ |
+$$ |      $$ |  $$ |$$ \$$$$ |$$  __|     $$ |  $$ |\_$$ |$$ |  $$ |$$  __$$< $$  __$$ |  $$ |     $$ |  $$ |  $$ |$$ \$$$$ |
+$$ |  $$\ $$ |  $$ |$$ |\$$$ |$$ |        $$ |  $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |  $$ |     $$ |  $$ |  $$ |$$ |\$$$ |
+\$$$$$$  | $$$$$$  |$$ | \$$ |$$ |      $$$$$$\ \$$$$$$  |\$$$$$$  |$$ |  $$ |$$ |  $$ |  $$ |   $$$$$$\  $$$$$$  |$$ | \$$ |
+ \______/  \______/ \__|  \__|\__|      \______| \______/  \______/ \__|  \__|\__|  \__|  \__|   \______| \______/ \__|  \__|
+--->
 
-<img src="./.media/assets/sections/assets_sections_e.png" align="left" width="5%" height="auto"/>
+## Configuration
+<sup>[(Back to Top)](#table-of-contents)</sup><br>
 
-This section explains how we build our software, focusing on different structures like monolithic and distributed systems. You will also find information about our development workflows, including continuous integration and delivery.
+<img src=".media/assets/sections/assets_sections_d.png" align="left" width="5%" height="auto"/>
+
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
 
 ### Table Of Contents:
-  - $\large\color{Goldenrod}{\textbf{Development - Structure}}$
-     - [Development - Structure - Monolithic](./.docs/40_development/structure/MONOLITHIC.md#development---structure---monolithic)
-   <sup><img src="https://labl.es/svg?text=WIP&bgcolor=F7DC6F" align="center"/></sup>
-     - Development - Structure - Distributed
-   <sup><img src="https://labl.es/svg?text=WIP&bgcolor=F7DC6F" align="center"/></sup>
-     - Development - Structure - Repository
-   <sup><img src="https://labl.es/svg?text=WIP&bgcolor=F7DC6F" align="center"/></sup> 
-  - $\large\color{Goldenrod}{\textbf{Development - Workflow}}$
-     - Development - Workflow - CI
-   <sup><img src="https://labl.es/svg?text=WIP&bgcolor=F7DC6F" align="center"/></sup>
-     - Development - Workflow - CD
-   <sup><img src="https://labl.es/svg?text=WIP&bgcolor=F7DC6F" align="center"/></sup>
+  - $\large\color{Goldenrod}{\textbf{Configuration}}$
+     - [Configuration - `Helm Chart`](./.docs/30_configuration/MONOLITHIC.md#configuration---helm)
+     - [Configuration - `Overlay Resource`](./.docs/30_configuration/MONOLITHIC.md#configuration---overlay)
 
 <!---
 $$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
