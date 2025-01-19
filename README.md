@@ -199,8 +199,8 @@ It is a long established fact that a reader will be distracted by the readable c
 
 ### Table Of Contents:
   - $\large\color{Goldenrod}{\textbf{Configuration}}$
-     - [Configuration - `Helm Chart`](./.docs/30_configuration/CONFIGURATION.md#configuration---helm)
-     - [Configuration - `Overlay Resource`](./.docs/30_configuration/CONFIGURATION.md#configuration---overlay)
+     - [Configuration - `Helm`](./.docs/30_configuration/CONFIGURATION.md#configuration---helm)
+     - [Configuration - `Overlay`](./.docs/30_configuration/CONFIGURATION.md#configuration---overlay)
 
 <!---
 $$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\    $$\ $$$$$$\ $$$$$$$$\ $$\      $$\ 
