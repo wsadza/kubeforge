@@ -144,10 +144,78 @@ If you want to test <code>Kubeforge</code> without installing it directly on the
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et tempus nulla, non gravida diam. Nam dignissim pharetra convallis. Nunc maximus porttitor sem. Proin non maximus ipsum. Vivamus quis ornare dui.
 
+<!-- list -->   
+<ul>
 
-```sh
-TEST
-```
+   <!-- element [0] -->    
+   <li>
+   <details>
+   <summary>$\color{#FAFAD2}{\textsf{Preparation}}$</summary>
+   <ul>
+   <li>
+   <p>Add the Helm chart repository.</p>
+   
+    helm repo add kubeforge https://wsadza.github.io/kubeforge && helm repo update
+
+   </details>
+   </li>   
+
+   <!-- element [1] -->    
+   <li>
+   <details>
+   <summary>$\color{#EEE8AA}{\textsf{Installation}}$</summary>
+   <ul>
+   <li>
+   <p>Install the <code>Kubeforge</code> Helm chart with a customized source configuration</p>
+
+    cat <<EOF | helm install kubeforge kubeforge/kubeforge -f -
+    kubeforge:
+      sourceConfiguration:
+        Pod:
+        - metadata:
+            name: bannana-pod 
+          spec:
+            containers:
+              - name: bannana 
+                command: [ "tail", "-f", "/dev/null" ]
+    EOF
+
+   </ul>
+   </details>
+   </li>
+   <!-- element [1] --> 
+   
+   <!-- element [2] -->    
+   <li>
+   <details>
+   <summary>$\color{#F0E68C}{\textsf{Usage}}$</summary>
+   <ul>
+   <li>
+   <p>Create a <code>Kubeforge</code> overlay resource to provision the "banana-pod"</p>
+   
+    cat <<EOF | kubectl apply -f -
+    apiVersion: kubeforge.sh/v1
+    kind: Overlay
+    metadata:
+      name: "bannana" 
+    spec:
+      data:
+        Pod:
+          - metadata:
+              name: bannana-pod 
+            spec:
+              containers:
+              - name: bannana 
+                image: busybox 
+    EOF
+    
+   </li>
+   </ul>
+   </details>
+   </li>
+   <!-- element [2] --> 
+
+</ul>
 
 <br>
 <br>
