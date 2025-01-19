@@ -152,7 +152,7 @@ $$ |  $$ |$$\   $$ |$$ |  $$ |$$ |  $$ |$$ |
 ## Usage
 <sup>[(Back to Top)](#table-of-contents)</sup><br>
 
-This section provides guidance on deploying and configuring streaming instances using Docker, Docker Compose, and Kubernetes (K8S) manifests. It includes specific instructions for different Linux distributions and GPU acceleration.
+This section provides guidance on deploying and configuring a Kubeforge instance. Whether you want to test it or install it on your Kubernetes cluster, below are two methods for using the Kubeforge controller.
 
 ### Table Of Contents:
   - $\large\color{Goldenrod}{\textbf{Usage}}$
