@@ -118,15 +118,9 @@ $$ |      $$ |  $$ |$$$$$$$$\    \$  /   $$$$$$\ $$$$$$$$\ $$  /   \$$ |
    <br>
    <br>
    <div style="width: 800; height: auto; background-color: black;">
-      <video width="320" height="240" autoplay>
-         <source src="./.media/previews/previews_installation.mp4" type="video/mp4">
-      </video> 
-<!---      <img src="./.media/previews/previews_installation.mp4" width="800" height="auto"/> -->
+   <img src="./.media/previews/previews_installation.gif" width="800" height="auto"/>
    </div>      
 </div>
-
-
-https://github.com/user-attachments/assets/52fa5cf5-d099-4e20-b7c6-96049fb26d7b
 
 
 <!---
