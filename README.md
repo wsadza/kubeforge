@@ -241,7 +241,7 @@ The "Miscellaneous" section gathers various resources and content that may not b
 
 ### Table Of Contents:
 - $\large\color{Goldenrod}{\textbf{Helpful Resources}}$
-   - [Controller Pattern](./.docs/50_miscellaneous/MISCELLANEOUS.md#helpful-resources---controller-patterns)
+   - [Controller Patterns](./.docs/50_miscellaneous/MISCELLANEOUS.md#helpful-resources---controller-patterns)
    - [TODO List](./.docs/50_miscellaneous/MISCELLANEOUS.md#helpful-resources---todo-list)
 - [Document Template](./.docs/50_miscellaneous/DOCUMENT_TEMPLATE.md)
 
