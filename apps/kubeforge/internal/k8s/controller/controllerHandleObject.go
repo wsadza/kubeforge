@@ -102,5 +102,6 @@ func (controller *controller) enqueue (obj interface{}) {
     return
   } else { 
     controller.workqueue.Add(objectRef)
+    controller.updateHealthz(true)
   }
 }

@@ -76,6 +76,7 @@ jobs:
           dockerfile_path:    ${{ steps.dockerfile_find.outputs.DOCKERFILE_PATH }} 
           
           # Optional
+          docker_build_arguments:  
           docker_build_tag_current: ${{ steps.docker_tag.outputs.TAG_CURRENT }}
           docker_build_tag_latest:  ${{ steps.docker_tag.outputs.TAG_LATEST }}
           docker_build_labels:      ${{ steps.repository_metadata.outputs.json }}

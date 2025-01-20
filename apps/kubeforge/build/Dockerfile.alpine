@@ -17,12 +17,13 @@ RUN \
 # ~ upx
 
 ARG \
+    COMPRESSION_ENABLED=true \
     UPX_VERSION="v4.2.4"
 
 RUN \
     echo "**** UPX ****" \
 		&& \
-    if [ "${COMPRESSION_ENABLED}" = "false" ]; \
+    if [ "${COMPRESSION_ENABLED}" = "true" ]; \
     then \
            ARCHITECTURE="$(dpkg --print-architecture)" \
         && API_URL_BASE="https://api.github.com/repos" \
@@ -56,9 +57,6 @@ RUN \
 COPY ../ /opt/kubeforge
 WORKDIR /opt/kubeforge
 
-ARG \
-    COMPRESSION_ENABLED=false
-
 RUN \
     echo "**** Building / Compression: (${COMPRESSION_ENABLED}) ****" \
     		&& go mod download \
@@ -66,12 +64,8 @@ RUN \
         && export GOOS=linux \
         && export GOARCH=amd64 \
 		&& \
-    if [ "${COMPRESSION_ENABLED}" = "false" ]; \
+    if [ "${COMPRESSION_ENABLED}" = "true" ]; \
 	  then \
-      	go build \
-          -o /opt/kubeforge/bin/kubeforge \
-          /opt/kubeforge/cmd/main.go; \
-    else \
       	go build \
       	  -gcflags=all="-l -B" \
       	  -ldflags="-w -s" \
@@ -82,6 +76,10 @@ RUN \
       	  --ultra-brute \
       	  /opt/kubeforge/bin/kubeforge \
 					>/dev/null; \
+    else \
+      	go build \
+          -o /opt/kubeforge/bin/kubeforge \
+          /opt/kubeforge/cmd/main.go; \
     fi
 
 # ----------------------------------------------------------

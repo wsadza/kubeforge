@@ -120,6 +120,7 @@ func (controller *controller) Run() error {
 
   // Set ready just before launching 
   controller.updateReadyz(true)
+  controller.updateHealthz(true)
 
 	// Launch two workers to process resources
 	for i := 0; i < controller.workingWorkers; i++ {
@@ -165,6 +166,7 @@ func (controller *controller) processNextWorkItem(ctx context.Context) bool {
 		return true
 	} 
 
+  fmt.Printf("err: %v\n", err)
   // Procesing uncorrectly
   controller.updateHealthz(false)
 

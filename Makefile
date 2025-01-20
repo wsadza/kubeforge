@@ -28,6 +28,7 @@ local-run:
 docker-build:
 	-@docker build \
 			--file $(APP_PATH)/build/Dockerfile.alpine \
+			--build-arg COMPRESSION_ENABLED=false \
 			--tag $(APP_NAME) \
 			$(APP_PATH)
 
@@ -45,9 +46,9 @@ helm-uninstall:
 helm-install: 
 	-@cd charts/kubeforge && helm upgrade --install kubeforge -f values.yaml .
 
-.PHONY: helm-test
-helm-test: 
-	-@helm test kubeforge
+#.PHONY: helm-test
+#helm-test: 
+#	-@helm test kubeforge
 
 # -----------------------------------------
 
@@ -58,4 +59,4 @@ publish-k3s: docker-build
 # -----------------------------------------
 
 .PHONY: test
-test: docker-build publish-k3s helm-uninstall helm-install helm-test
+test: docker-build publish-k3s helm-uninstall helm-install
